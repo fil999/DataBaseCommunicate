@@ -19,7 +19,7 @@ public class SavedGame3 {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID_SAVED_3")
-    private long ID_saved;
+    private long id;
 
     @Getter
     @Setter
@@ -28,13 +28,15 @@ public class SavedGame3 {
 
     @Getter
     @Setter
-    @Column(name = "PLAYER_2_SAVED_3")
-    private long player2;
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @JoinColumn(name = "PLAYER_2_SAVED_3", referencedColumnName = "ID_PLAYER", updatable = false)
+    private Player player2;
 
     @Getter
     @Setter
-    @Column(name = "PLAYER_3_SAVED_3")
-    private long player3;
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @JoinColumn(name = "PLAYER_3_SAVED_3", referencedColumnName = "ID_PLAYER", updatable = false)
+    private Player player3;
 
     @Getter
     @Setter
@@ -62,7 +64,7 @@ public class SavedGame3 {
     private String trump;
 
 
-    public SavedGame3(long player1, long player2, long player3, String cardPlayer1, String cardPlayer2, String cardPlayer3, String cardResidual, String trump) {
+    public SavedGame3(long player1, Player player2, Player player3, String cardPlayer1, String cardPlayer2, String cardPlayer3, String cardResidual, String trump) {
         this.player1 = player1;
         this.player2 = player2;
         this.player3 = player3;
@@ -76,7 +78,7 @@ public class SavedGame3 {
     @Override
     public String toString() {
         return "SavedGame3{" +
-                "ID_saved=" + ID_saved +
+                "ID_saved=" + id +
                 ", player1=" + player1 +
                 ", player2=" + player2 +
                 ", player3=" + player3 +

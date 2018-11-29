@@ -22,12 +22,12 @@ public class Player{
     @Id
     @Column(name = "ID_PLAYER")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long ID_player;
+    private long id;
 
     @Getter
     @Setter
-    @Column(name = "EMAIL_PLAYER", length = 50)
-    private String email_player;
+    @Column(name = "EMAIL_PLAYER", length = 50, unique = true)
+    private String email;
 
     @Getter
     @Setter
@@ -37,27 +37,27 @@ public class Player{
     @Getter
     @Setter
     @Column(name = "NAME_PLAYER", length = 50)
-    private String name_player;
+    private String name;
 
     @Getter
     @Setter
     @Column(name = "PASSWORD_PLAYER")
-    private String password_player;
+    private String password;
 
     @Getter
     @Setter
     @Column(name = "WINS_PLAYER")
-    private int wins_player;
+    private int wins;
 
     @Getter
     @Setter
     @Column(name = "LOSING_PLAYER")
-    private int losing_player;
+    private int losing;
 
     @Getter
     @Setter
     @Column(name = "TIE_PLAYER")
-    private int tie_player;
+    private int tie;
 
     @Getter
     @Setter
@@ -84,42 +84,48 @@ public class Player{
 
     @Getter
     @Setter
-    @OneToMany
+    @OneToMany(fetch = FetchType.LAZY)
     @JoinColumn(name = "PLAYER_RESULT")
     private Collection<LastResult> lastResults;
 
     @Getter
     @Setter
-    @OneToMany
+    @OneToMany(fetch = FetchType.LAZY)
     @JoinColumn(name = "PLAYER_1_SAVED_2")
     private Collection<SavedGame2> savedGame2;
 
     @Getter
     @Setter
-    @OneToMany
+    @OneToMany(fetch = FetchType.LAZY)
     @JoinColumn(name = "PLAYER_1_SAVED_3")
     private Collection<SavedGame3> savedGame3;
 
     @Getter
     @Setter
-    @OneToMany
+    @OneToMany(fetch = FetchType.LAZY)
     @JoinColumn(name = "PLAYER_1_SAVED_4")
     private Collection<SavedGame4> savedGame4;
 
     @Getter
     @Setter
-    @OneToMany
+    @OneToMany(fetch = FetchType.LAZY)
     @JoinColumn(name = "PLAYER1_FRIEND")
     private Collection<Friend> friends;
 
-    public Player(String email_player, int bot, String name_player, String password_player, int wins_player, int losing_player, int tie_player, long balance, Collection<Back> backs, Collection<Face> faces, Collection<GamingTable> tables, Collection<LastResult> lastResults, Collection<SavedGame2> savedGame2, Collection<SavedGame3> savedGame3, Collection<SavedGame4> savedGame4, Collection<Friend> friends) {
-        this.email_player = email_player;
+    public Player(long id, String email, String name) {
+        this.id = id;
+        this.email = email;
+        this.name = name;
+    }
+
+    public Player(String email, int bot, String name, String password, int wins, int losing, int tie, long balance, Collection<Back> backs, Collection<Face> faces, Collection<GamingTable> tables, Collection<LastResult> lastResults, Collection<SavedGame2> savedGame2, Collection<SavedGame3> savedGame3, Collection<SavedGame4> savedGame4, Collection<Friend> friends) {
+        this.email = email;
         this.bot = bot;
-        this.name_player = name_player;
-        this.password_player = password_player;
-        this.wins_player = wins_player;
-        this.losing_player = losing_player;
-        this.tie_player = tie_player;
+        this.name = name;
+        this.password = password;
+        this.wins = wins;
+        this.losing = losing;
+        this.tie = tie;
         this.balance = balance;
         this.backs = backs;
         this.faces = faces;
@@ -134,7 +140,7 @@ public class Player{
     @Override
     public String toString() {
         return "Player{" +
-                "ID_player=" + ID_player +
+                "id=" + id +
                /* ", email_player='" + email_player + '\'' +
                 ", bot=" + bot +
                 ", name_player='" + name_player + '\'' +
@@ -147,10 +153,10 @@ public class Player{
                 ", faces=" + faces +
                 ", tables=" + tables +
                 ", lastResults=" + lastResults + */
-                ", savedGame2=" + savedGame2 +
-                ", savedGame3=" + savedGame3 +
-                ", savedGame4=" + savedGame4 +
-                ", friends=" + friends +
+              //  ", savedGame2=" + savedGame2 +
+              //  ", savedGame3=" + savedGame3 +
+              //  ", savedGame4=" + savedGame4 +
+                //", friends=" + friends +
                 '}';
     }
 }

@@ -1,6 +1,5 @@
 package edu.ssu.netcracker.course.fil.DataBaseCommunicate.entity;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -10,6 +9,8 @@ import javax.persistence.*;
 /**
  * Created by --- on 25.11.2018.
  */
+
+//hateoas
 @NoArgsConstructor
 @Entity
 @Table(name = "COMMENT_PLAYER")
@@ -20,7 +21,7 @@ public class Comment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID_COMMENT")
-    private long ID_comment;
+    private long id;
 
     @Getter
     @Setter
@@ -41,7 +42,7 @@ public class Comment {
     @Override
     public String toString() {
         return "Comment{" +
-                "ID_comment=" + ID_comment +
+                "id=" + id +
                 ", player=" + player +
                 ", text='" + text + '\'' +
                 '}';

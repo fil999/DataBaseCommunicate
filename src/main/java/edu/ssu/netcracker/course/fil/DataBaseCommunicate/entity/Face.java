@@ -20,37 +20,37 @@ public class Face {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID_FACE")
-    private long ID_face;
+    private long id;
 
     @Getter
     @Setter
     @Column(name = "NAME_FACE", length = 50)
-    private String name_face;
+    private String name;
 
     @Getter
     @Setter
     @Column(name = "COST_FACE")
-    private int cost_face;
+    private int cost;
 
     @Getter
     @Setter
     @Column(name = "PATCH_FACE", length = 50)
-    private String patch_face;
+    private String patch;
 
 
-    public Face(String name_face, int cost_face, String patch_face) {
-        this.name_face = name_face;
-        this.cost_face = cost_face;
-        this.patch_face = patch_face;
+    public Face(String name, int cost, String patch) {
+        this.name = name;
+        this.cost = cost;
+        this.patch = patch;
     }
 
     @Override
     public String toString() {
         return "Face{" +
-                "ID_face=" + ID_face +
-                ", name_face='" + name_face + '\'' +
-                ", cost_face=" + cost_face +
-                ", patch_face='" + patch_face + '\'' +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", cost=" + cost +
+                ", patch='" + patch + '\'' +
                 '}';
     }
 }

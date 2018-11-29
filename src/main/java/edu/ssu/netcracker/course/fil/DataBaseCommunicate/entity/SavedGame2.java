@@ -20,7 +20,7 @@ public class SavedGame2{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID_SAVED_2")
-    private long ID_saved;
+    private long id;
 
     @Getter
     @Setter
@@ -29,10 +29,9 @@ public class SavedGame2{
 
     @Getter
     @Setter
-    //@ManyToOne(fetch = FetchType.EAGER)
-    //@JoinColumn(name = "ID_PLAYER")
-    @Column(name = "PLAYER_2_SAVED_2")
-    private long player2;
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @JoinColumn(name = "PLAYER_2_SAVED_2", referencedColumnName = "ID_PLAYER", updatable = false)
+    private Player player2;
 
 
     @Getter
@@ -56,7 +55,7 @@ public class SavedGame2{
     private String trump;
 
 
-    public SavedGame2(long player1, long player2, String cardPlayer1, String cardPlayer2, String cardResidual, String trump) {
+    public SavedGame2(long player1, Player player2, String cardPlayer1, String cardPlayer2, String cardResidual, String trump) {
         this.player1 = player1;
         this.player2 = player2;
         this.cardPlayer1 = cardPlayer1;

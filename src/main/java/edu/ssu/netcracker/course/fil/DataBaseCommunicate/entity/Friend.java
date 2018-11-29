@@ -20,7 +20,7 @@ public class Friend {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID_FRIEND")
-    private long ID_friend;
+    private long id;
 
     @Getter
     @Setter
@@ -29,18 +29,19 @@ public class Friend {
 
     @Getter
     @Setter
-    @Column(name = "PLAYER2_FRIEND")
-    private long player2;
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @JoinColumn(name = "PLAYER2_FRIEND", referencedColumnName = "ID_PLAYER", updatable = false)
+    private Player player2;
 
     @Getter
     @Setter
     @Column(name = "WINS_PLAYER1_FRIEND")
-    private int wins_player1;
+    private int winsPlayer1;
 
     @Getter
     @Setter
     @Column(name = "WINS_PLAYER2_FREIND")
-    private int wins_player2;
+    private int winsPlayer2;
 
     @Getter
     @Setter
@@ -54,32 +55,24 @@ public class Friend {
     private Collection<ResultsFriends> resultsFriends;
 
 
-    public Friend(long player1, long player2, int wins_player1, int wins_player2, int tie, Collection<ResultsFriends> resultsFriends) {
+    public Friend(long player1, Player player2, int winsPlayer1, int winsPlayer2, int tie, Collection<ResultsFriends> resultsFriends) {
         this.player1 = player1;
         this.player2 = player2;
-        this.wins_player1 = wins_player1;
-        this.wins_player2 = wins_player2;
+        this.winsPlayer1 = winsPlayer1;
+        this.winsPlayer2 = winsPlayer2;
         this.tie = tie;
         this.resultsFriends = resultsFriends;
     }
 
-    public Friend(long player1, long player2) {
-        this.player1 = player1;
-        this.player2 = player2;
-        this.wins_player1 = 0;
-        this.wins_player2 = 0;
-        this.tie = 0;
-        this.resultsFriends = null;
-    }
 
     @Override
     public String toString() {
         return "Friend{" +
-                "ID_friend=" + ID_friend +
+                "id=" + id +
                 ", player1=" + player1 +
                 ", player2=" + player2 +
-                ", wins_player1=" + wins_player1 +
-                ", wins_player2=" + wins_player2 +
+                ", winsPlayer1=" + winsPlayer1 +
+                ", winsPlayer2=" + winsPlayer2 +
                 ", tie=" + tie +
                 ", resultsFriends=" + resultsFriends +
                 '}';

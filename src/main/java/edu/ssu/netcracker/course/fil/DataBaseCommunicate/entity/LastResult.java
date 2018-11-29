@@ -5,6 +5,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 /**
  * Created by --- on 25.11.2018.
@@ -12,14 +13,14 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Entity
 @Table(name = "LAST_RESULTS_PLAYER")
-public class LastResult {
+public class LastResult{
 
     @Getter
     @Setter
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID_RESULT")
-    private long ID_result;
+    private long id;
 
     @Getter
     @Setter
@@ -28,15 +29,16 @@ public class LastResult {
 
     @Getter
     @Setter
-    @Column(name = "OPPONENT_RESULT")
-    private long opponent;
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @JoinColumn(name = "OPPONENT_RESULT", referencedColumnName = "ID_PLAYER", updatable = false)
+    private Player opponent;
 
     @Getter
     @Setter
     @Column(name = "RESULT_RESULT")
     private int result;
 
-    public LastResult(long player, long opponent, int result) {
+    public LastResult(long player, Player opponent, int result) {
         this.player = player;
         this.opponent = opponent;
         this.result = result;
@@ -45,7 +47,7 @@ public class LastResult {
     @Override
     public String toString() {
         return "LastResult{" +
-                "ID_result=" + ID_result +
+                "id=" + id +
                 ", player=" + player +
                 ", opponent=" + opponent +
                 ", result=" + result +

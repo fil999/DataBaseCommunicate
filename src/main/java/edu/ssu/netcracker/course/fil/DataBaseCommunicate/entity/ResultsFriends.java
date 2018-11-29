@@ -19,7 +19,7 @@ public class ResultsFriends {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID_RESULTS_FRIEND")
-    private long ID_result;
+    private long id;
 
     @Getter
     @Setter
@@ -40,7 +40,7 @@ public class ResultsFriends {
     @Override
     public String toString() {
         return "ResultsFriends{" +
-                "ID_result=" + ID_result +
+                "id=" + id +
                 ", friends=" + friends +
                 ", result=" + result +
                 '}';

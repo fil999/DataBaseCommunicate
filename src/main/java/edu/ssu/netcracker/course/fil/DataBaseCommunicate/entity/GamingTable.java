@@ -19,37 +19,37 @@ public class GamingTable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID_TABLE")
-    private long id_table;
+    private long id;
 
     @Getter
     @Setter
     @Column(name = "NAME_TABLE", length = 50)
-    private String name_table;
+    private String name;
 
     @Getter
     @Setter
     @Column(name = "COST_TABLE")
-    private int cost_table;
+    private int cost;
 
     @Getter
     @Setter
     @Column(name = "PATCH_TABLE", length = 50)
-    private String patch_table;
+    private String patch;
 
 
-    public GamingTable(String name_table, int cost_table, String patch_table) {
-        this.name_table = name_table;
-        this.cost_table = cost_table;
-        this.patch_table = patch_table;
+    public GamingTable(String name, int cost, String patch) {
+        this.name = name;
+        this.cost = cost;
+        this.patch = patch;
     }
 
     @Override
     public String toString() {
         return "GamingTable{" +
-                "id_table=" + id_table +
-                ", name_table='" + name_table + '\'' +
-                ", cost_table=" + cost_table +
-                ", patch_table='" + patch_table + '\'' +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", cost=" + cost +
+                ", patch='" + patch + '\'' +
                 '}';
     }
 }

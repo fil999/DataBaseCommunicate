@@ -2,11 +2,11 @@ package edu.ssu.netcracker.course.fil.DataBaseCommunicate.controller;
 
 import edu.ssu.netcracker.course.fil.DataBaseCommunicate.entity.Statistics;
 import edu.ssu.netcracker.course.fil.DataBaseCommunicate.repository.StatisticsRepository;
+import edu.ssu.netcracker.course.fil.DataBaseCommunicate.service.StatisticsService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
 
@@ -18,10 +18,11 @@ import java.util.Date;
 public class StatisticsController {
 
     @Autowired
-    private StatisticsRepository statisticsRepository;
+    private StatisticsService statisticsService;
 
-    @RequestMapping(value = "/insertStatistics",  method = RequestMethod.POST)
-    public void insertStatistics(@RequestParam("number") int number){
-        statisticsRepository.save(new Statistics(new Date(), number));
+    @ResponseBody
+    @RequestMapping(value = "/insertStatistics", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public int insertStatistics(@RequestBody int number){
+        return statisticsService.insertStatistics(number);
     }
 }

@@ -18,7 +18,7 @@ public class Statistics {
     @Getter
     @Setter
     @Id
-    @Column(name = "DATE_STATISTICS")
+    @Column(name = "DATE_STATISTICS", unique = true)
     @Temporal(TemporalType.DATE)
     private Date dateStatistics;
 
