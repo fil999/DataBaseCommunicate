@@ -16,16 +16,6 @@ public class StatisticsService {
     @Autowired
     private StatisticsRepository statisticsRepository;
 
-    /*public int insertStatistics(Statistics statistics){
-        if (statistics.getNumberPlayerStatistics() >= 0){
-            statistics.setDateStatistics(new Date());
-            statisticsRepository.save(statistics);
-            return 0;
-        } else {
-            return -1;
-        }
-    }*/
-
     public int insertStatistics(int number){
         if (number >= 0){
             statisticsRepository.save(new Statistics(new Date(), number));
