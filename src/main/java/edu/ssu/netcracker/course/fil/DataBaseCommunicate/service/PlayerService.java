@@ -14,6 +14,7 @@ public class PlayerService {
     @Autowired
     private PlayerRepository playerRepository;
 
+	//TODO: зарефачить и раскидать логику по методам
     public Player selectByEmailAndPassword(Player player){
         if ((player.getEmail() != null) && (player.getPassword() != null)) {
             player = playerRepository.findPlayerByEmailAndPassword(player.getEmail(), player.getPassword());
